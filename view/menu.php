@@ -17,18 +17,29 @@
 
 </head>
 <body>
-    <div class="region-login">
+    <div class="region-salas">
   
-            <div class="login flex-cv">
-                <form action="../services/login.php" method="POST"class="login-form shadow1">
-                    <label for="username">Correo</label>
-                    <input type="email" placeholder="ej. pepito@gmail.com" id="login_username" class="login-input_username" name="username">
-                    <label for="password">Contraseña</label>
-                    <input type="password" placeholder="Password" id="login_password" class="login-input_password" name="password">
-                    <span><input type="checkbox" name="showpass" onclick="showPass()"><label for="showpass">Mostrar contraseña</label></span>
-                    <input type="submit" name="enviar" value="enviar" id="login_btn_enviar" class="login-btn_enviar">
-                </form>
-                
+            <div class="grid-salas flex-cv">
+                <div class="sala" id="sala1">
+                    <h2>Sala1</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Mesas Libres: </th>
+                                <td>2 mesas</td>
+                            </tr>
+                            <tr>
+                                <th>Mesas ocupadas: </th>
+                                <td>2 mesas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sala"><p>Sala2</p></div>
+                <div class="sala"><p>Sala3</p></div>
+                <div class="sala"><p>Sala4</p></div>
+                <div class="sala"><p>Sala5</p></div>
+                <div class="sala"><p>Sala6</p></div>
             </div>
       
     </div>

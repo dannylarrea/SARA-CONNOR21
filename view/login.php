@@ -13,8 +13,6 @@
     <link rel="icon" type="image/png" href="../img/icon.png">
     <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="../css/style.css">
-
-
 </head>
 <body>
     <div class="region-login">

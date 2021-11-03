@@ -2,7 +2,7 @@
   display: none;
 }
 
-.flex-cv, .region-login form.login-form {
+.flex-cv, .region-login form.login-form, .region-salas, .region-salas .grid-salas .sala {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -102,5 +102,59 @@ body {
 .region-login form.login-form input[type='submit']:hover {
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
+}
+
+.region-salas {
+  margin: 15px 20px;
+}
+
+.region-salas .grid-salas {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(270px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  -ms-grid-rows: ()[200px];
+      grid-template-rows: repeat(200px);
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2vw;
+}
+
+@media (max-width: 1200px) {
+  .region-salas .grid-salas {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+.region-salas .grid-salas .sala {
+  width: 300px;
+  height: 250px;
+  background: #E4BE9E;
+  margin: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+.region-salas .grid-salas .sala table {
+  margin-top: 10px;
+}
+
+.region-salas .grid-salas .sala table,
+.region-salas .grid-salas .sala table th,
+.region-salas .grid-salas .sala table td {
+  border: 1px solid #264653;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.region-salas .grid-salas .sala table th {
+  font-weight: bold;
+  text-align: left;
+  margin-right: 1px;
 }
 /*# sourceMappingURL=style.css.map */

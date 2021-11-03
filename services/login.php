@@ -22,6 +22,9 @@ try {
         $_SESSION['email']=$username;
         header("Location:../View/menu.php");
     }
+    else {
+        header("Location:../View/login.php");
+    }
 }catch(PDOException $e){
     header("Location:../View/login.php");
  }

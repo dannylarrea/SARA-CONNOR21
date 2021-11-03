@@ -33,7 +33,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bd_restaurante`.`tbl_mesa` (
   `id_mes` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre_mes` VARCHAR(45) NULL DEFAULT NULL,
   `status_mes` ENUM("Libre", "Mantenimiento", "Ocupado/Reservado") NOT NULL,
   `capacidad_mes` INT(3) NOT NULL,
   `id_sal_fk` INT(11) NOT NULL,

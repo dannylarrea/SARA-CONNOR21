@@ -36,6 +36,7 @@ $red:#ff513a;
 $yellow: #e9ff3a;
 $white: #ffffff;
 $black: #000000;
+$grid-float-breakpoint: 1200px;
  :root {
     --color1: $color1;
     --color2: $color2;
@@ -100,6 +101,45 @@ body {
                 transition: all 0.3s;
                 &:hover {
                     transform: scale(1.03);
+                }
+            }
+        }
+    }
+}
+
+.region-salas {
+    margin: 15px 20px;
+    @extend .flex-cv;
+    .grid-salas {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        grid-template-rows: repeat(200px);
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 2vw;
+        @media (max-width: $grid-float-breakpoint) {
+            grid-template-columns: 1fr 1fr;
+        }
+        .sala {
+            width: 300px;
+            height: 250px;
+            background: $color3;
+            margin: 10px;
+            @extend .flex-cv;
+            flex-flow: column wrap;
+            table {
+                margin-top: 10px;
+                &,
+                th,
+                td {
+                    border: 1px solid $color5;
+                    border-collapse: collapse;
+                    padding: 5px;
+                }
+                th {
+                    font-weight: bold;
+                    text-align: left;
+                    margin-right: 1px;
                 }
             }
         }

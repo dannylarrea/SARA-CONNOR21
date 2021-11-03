@@ -1,3 +1,5 @@
+-- MySQL Workbench Forward Engineering
+
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -33,6 +35,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bd_restaurante`.`tbl_mesa` (
   `id_mes` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre_mes` VARCHAR(45) NULL DEFAULT NULL,
   `status_mes` ENUM("Libre", "Mantenimiento", "Ocupado/Reservado") NOT NULL,
   `capacidad_mes` INT(3) NOT NULL,
   `id_sal_fk` INT(11) NOT NULL,
@@ -94,3 +97,15 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza atardecer', '16');
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza baja', '28');
+
+INSERT INTO `tbl_usuario` (`id_use`, `nombre_use`, `email_use`, `pwd_use`, `tipo_use`) VALUES (NULL, 'Alfredo', 'blumal@fje.edu', MD5('1234'), 'Camarero');
+INSERT INTO `tbl_usuario` (`id_use`, `nombre_use`, `email_use`, `pwd_use`, `tipo_use`) VALUES (NULL, 'Isaac', 'isaac@fje.edu', MD5('1234'), 'Camarero');
+INSERT INTO `tbl_usuario` (`id_use`, `nombre_use`, `email_use`, `pwd_use`, `tipo_use`) VALUES (NULL, 'Raul', 'raulseleccion@fje.edu', MD5('qweQWE123'), 'Camarero');
+
+INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '2');
+INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '3');
+
+INSERT INTO `tbl_reserva` (`id_res`, `horaIni_res`, `horaFin_res`, `datos_res`, `id_use_fk`, `id_mes_fk`) VALUES (NULL, '19:10:41', NULL, 'Reserva Google', '2', '2');

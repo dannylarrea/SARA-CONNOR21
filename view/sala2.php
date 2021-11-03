@@ -18,32 +18,30 @@
 </head>
 <body>
     <div class="region-salas">
-        <div class="grid-salas flex-cv">
-            <div class="sala" id="sala1">
-                <h2>Sala1</h2>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Capacidad total sala: </th>
-                            <td>24 personas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas Libres: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas ocupadas: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                    </tbody>
-                </table>
+  
+            <div class="grid-salas flex-cv">
+                <div class="sala" id="sala1">
+                    <h2>Sala1</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Mesas Libres: </th>
+                                <td>2 mesas</td>
+                            </tr>
+                            <tr>
+                                <th>Mesas ocupadas: </th>
+                                <td>2 mesas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sala"><p>Sala2</p></div>
+                <div class="sala"><p>Sala3</p></div>
+                <div class="sala"><p>Sala4</p></div>
+                <div class="sala"><p>Sala5</p></div>
+                <div class="sala"><p>Sala6</p></div>
             </div>
-            <div class="sala"><p>Sala2</p></div>
-            <div class="sala"><p>Sala3</p></div>
-            <div class="sala"><p>Sala4</p></div>
-            <div class="sala"><p>Sala5</p></div>
-            <div class="sala"><p>Sala6</p></div>
-        </div>
+      
     </div>
 </body>
 </html>

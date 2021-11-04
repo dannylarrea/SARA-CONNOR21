@@ -19,8 +19,11 @@
 <body>
     <div class="region-salas">
         <div class="grid-salas flex-cv">
+            
+            
             <div class="sala" id="sala1">
-                <h2>Sala1</h2>
+                <img src="../media/icons/heart-dynamic-color.png" alt="">
+                <h2>Sala romance</h2>
                 <table>
                     <tbody>
                         <tr>
@@ -38,11 +41,87 @@
                     </tbody>
                 </table>
             </div>
-            <div class="sala"><p>Sala2</p></div>
-            <div class="sala"><p>Sala3</p></div>
-            <div class="sala"><p>Sala4</p></div>
-            <div class="sala"><p>Sala5</p></div>
-            <div class="sala"><p>Sala6</p></div>
+            <div class="sala" id="sala2">
+                <img src="../media/icons/sun-dynamic-color.png" alt="">
+                <h2>Salón Sol</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Capacidad total sala: </th>
+                            <td>24 personas</td>
+                        </tr>
+                        <tr>
+                            <th>Mesas Libres: </th>
+                            <td>2 mesas</td>
+                        </tr>
+                        <tr>
+                            <th>Mesas ocupadas: </th>
+                            <td>2 mesas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="sala" id="sala3">
+                <img src="../media/icons/glass-dynamic-color.png" alt="">
+                <h2>Sala gourmet</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Capacidad total sala: </th>
+                            <td>24 personas</td>
+                        </tr>
+                        <tr>
+                            <th>Mesas Libres: </th>
+                            <td>2 mesas</td>
+                        </tr>
+                        <tr>
+                            <th>Mesas ocupadas: </th>
+                            <td>2 mesas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="sala" id="sala4">
+                <img src="../media/icons/moon-dynamic-clay.png" alt="">
+                <h2>Terraza Luna</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Capacidad total sala: </th>
+                            <td>24 personas</td>
+                        </tr>
+                        <tr>
+                            <th>Mesas Libres: </th>
+                            <td>2 mesas</td>
+                        </tr>
+                        <tr>
+                            <th>Mesas ocupadas: </th>
+                            <td>2 mesas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="sala" id="sala5">
+                <img src="../media/icons/star-dynamic-color.png" alt="">
+                <h2>Terraza estrellas</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Capacidad total sala: </th>
+                            <td>24 personas</td>
+                        </tr>
+                        <tr>
+                            <th>Mesas Libres: </th>
+                            <td>2 mesas</td>
+                        </tr>
+                        <tr>
+                            <th>Mesas ocupadas: </th>
+                            <td>2 mesas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
         </div>
     </div>
 </body>

@@ -112,21 +112,54 @@ body {
     @extend .flex-cv;
     .grid-salas {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-        grid-template-rows: repeat(200px);
-        grid-template-rows: 1fr 1fr;
+        // grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        // grid-template-rows: repeat(200px);
+        // grid-template-rows: 2fr 2fr;
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 2vw;
         @media (max-width: $grid-float-breakpoint) {
             grid-template-columns: 1fr 1fr;
         }
         .sala {
-            width: 300px;
-            height: 250px;
+            width: 100%;
+            height: 100%;
             background: $color3;
             margin: 10px;
             @extend .flex-cv;
+            @extend .shadow1;
             flex-flow: column wrap;
+            transition: all 1s;
+            &:nth-child(1) {
+                // grid-column: 1/4;
+                // grid-row: 1 / 2;
+                grid-area: 1/1/1/1 span;
+            }
+            &:nth-child(2) {
+                // grid-column: 4/8;
+                // grid-row: 1 / 2;
+                grid-area: 1/2/1/2 span;
+            }
+            &:nth-child(3) {
+                // grid-column: 8/12;
+                // grid-row: 1 / 2;
+                grid-area: 1/4/1/1 span;
+            }
+            &:nth-child(4) {
+                // grid-column: 2/4;
+                // grid-row: 2 / 3;
+                grid-area: 2/2/2/1 span;
+            }
+            &:nth-child(5) {
+                // grid-column: 4/6;
+                // grid-row: 2 / 3;
+                grid-area: 2/3/2/1 span;
+            }
+            &:hover {
+                transform: scale(1.1);
+            }
+            img {
+                max-height: 100px;
+            }
             table {
                 margin-top: 10px;
                 &,
@@ -136,12 +169,141 @@ body {
                     border-collapse: collapse;
                     padding: 5px;
                 }
+                tr {}
                 th {
                     font-weight: bold;
                     text-align: left;
                     margin-right: 1px;
                 }
+                td {}
             }
         }
+    }
+}
+
+.region-mesas {
+    .mesa {
+        @extend .flex-cv;
+        flex-flow: column;
+        img {
+            max-height: 250px;
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////POPUP//////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+.overlay {
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    visibility: hidden;
+    z-index: 10;
+    &.active {
+        visibility: visible;
+    }
+}
+
+.popup {
+    background: #F8F8F8;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+    width: 600px;
+    transition: .3s ease all;
+    transform: scale(0.7);
+    opacity: 0;
+    z-index: 30;
+    form {
+        @extend .flex-cv;
+        flex-flow: column;
+    }
+    .btn-cerrarPop {
+        font-size: 16px;
+        line-height: 16px;
+        display: block;
+        text-align: right;
+        transition: .3s ease all;
+        color: #BBBBBB;
+        &:hover {
+            color: #000;
+        }
+    }
+    h3 {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        opacity: 0;
+    }
+    h4 {
+        font-size: 26px;
+        font-weight: 300;
+        margin-bottom: 40px;
+        opacity: 0;
+    }
+    .contenedor-popup {
+        opacity: 0;
+    }
+}
+
+
+/* ------------------------- */
+
+
+/* ANIMACIONES */
+
+
+/* ------------------------- */
+
+.popup.active {
+    transform: scale(1);
+    opacity: 1;
+    h3 {
+        animation: entradaTitulo .8s ease .5s forwards;
+    }
+    form {
+        animation: entradaSubtitulo .8s ease .5s forwards;
+    }
+    input[type="submit"] {
+        animation: entrada3 1s linear 1s forwards;
+    }
+}
+
+@keyframes entradaTitulo {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes entradaSubtitulo {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes entrada3 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

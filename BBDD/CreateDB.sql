@@ -95,12 +95,10 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza luna', '16');/*2x dos personas || 3x cuatro personas */
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza estrellas', '28');/*2x dos personas || 3x cuatro personas || 2x seis personas*/
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Salón sol', '48');/*4x dos personas || 4x cuatro personas || 3x seis personas || 1x diez personas*/
 
-
-
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza atardecer', '16');/*2x dos personas || 3x cuatro personas */
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza baja', '28');/*2x dos personas || 3x cuatro personas || 2x seis personas*/
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Salón central', '48');/*4x dos personas || 4x cuatro personas || 3x seis personas || 1x diez personas*/
 INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Sala romance', '28');/*12x dos personas || 2x cuatro personas */
 INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Sala gourmet', '28');/*2x dos personas || 6x cuatro personas */
 
@@ -131,7 +129,6 @@ INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VA
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '6', '3');
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '6', '3');
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '10', '3');/*fin sala 3 salón*/
-
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
@@ -153,7 +150,6 @@ INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VA
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');/*fin sala 1 terraza*/
-
+INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');/*fin sala 5 sala*/
 
 INSERT INTO `tbl_reserva` (`id_res`, `horaIni_res`, `horaFin_res`, `datos_res`, `id_use_fk`, `id_mes_fk`) VALUES (NULL, '19:10:41', NULL, 'Reserva Google', '2', '2');

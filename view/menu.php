@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SARA-CONNOR21</title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- librerias-->
+    <script type="text/javascript" src="../js/jquery.js"></script><!-- jquery-->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!-- sweetalert-->
+    <script type="text/javascript" src="../js/iconos_g.js"></script><!-- iconos FontAwesome-->
     <script type="text/javascript" src="../js/js.js"></script>
-    <script type="text/javascript" src="../js/iconos_g.js"></script>
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="../img/icon.png">
-    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="../css/style.css">
 
 
@@ -19,8 +19,6 @@
 <body>
     <div class="region-salas">
         <div class="grid-salas flex-cv">
-            
-            
             <div class="sala" id="sala1">
                 <img src="../media/icons/heart-dynamic-color.png" alt="">
                 <h2>Sala romance</h2>

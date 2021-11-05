@@ -22,8 +22,9 @@ USE `bd_restaurante` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bd_restaurante`.`tbl_sala` (
   `id_sal` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre_sal` ENUM("Sala romance", "Terraza atardecer", "Terraza baja", "Sala central", "Sala superior") NULL DEFAULT NULL,
+  `nombre_sal` ENUM("Terraza luna", "Terraza estrellas", "Salón sol", "Sala romance", "Sala gourmet") NULL DEFAULT NULL,
   `capacidad_sal` INT(3) NULL DEFAULT NULL,
+  `logo_sal`VARCHAR(30) NULL,
   PRIMARY KEY (`id_sal`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -95,9 +96,9 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza luna', '16');/*2x dos personas || 3x cuatro personas */
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza estrellas', '28');/*2x dos personas || 3x cuatro personas || 2x seis personas*/
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Salón sol', '48');/*4x dos personas || 4x cuatro personas || 3x seis personas || 1x diez personas*/
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza luna', '16', null);/*2x dos personas || 3x cuatro personas */
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza estrellas', '28', null);/*2x dos personas || 3x cuatro personas || 2x seis personas*/
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Salón sol', '48', null);/*4x dos personas || 4x cuatro personas || 3x seis personas || 1x diez personas*/
 
 INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Sala romance', '28');/*12x dos personas || 2x cuatro personas */
 INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Sala gourmet', '28');/*2x dos personas || 6x cuatro personas */

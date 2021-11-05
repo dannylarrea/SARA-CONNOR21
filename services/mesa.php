@@ -1,18 +1,18 @@
 <?php 
-class User{
-  private $id_use;
-  private $nombre_use;
-  private $email_use;
-  private $pwd_use;
-  private $tipo_use;
+class Mesa{
+  private $id_mes;
+  private $nombre_mes;
+  private $status_mes;
+  private $capacidad_mes;
+  private $id_sal_fk;
 
 
- public function __construct($id_use,$nombre_use,$email_use,$pwd_use,$tipo_use){
-    $this->id_use=$id_use;
-    $this->nombre_use=$nombre_use;
-    $this->email_use=$email_use;
-    $this->pwd_use=$pwd_use;
-    $this->tipo_use=$tipo_use;
+ public function __construct($id_mes,$nombre_mes,$status_mes,$capacidad_mes,$id_sal_fk){
+    $this->id_mes=$id_mes;
+    $this->nombre_mes=$nombre_mes;
+    $this->status_mes=$status_mes;
+    $this->capacidad_mes=$capacidad_mes;
+    $this->id_sal_fk=$id_sal_fk;
  }
 
 }

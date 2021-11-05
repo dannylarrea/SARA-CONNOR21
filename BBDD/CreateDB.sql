@@ -1,155 +1,237 @@
--- MySQL Workbench Forward Engineering
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 05-11-2021 a las 18:37:17
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.4.24
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema bd_restaurante
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema bd_restaurante
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `bd_restaurante` DEFAULT CHARACTER SET utf8 ;
-USE `bd_restaurante` ;
-
--- -----------------------------------------------------
--- Table `bd_restaurante`.`tbl_sala`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_restaurante`.`tbl_sala` (
-  `id_sal` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre_sal` ENUM("Sala romance", "Terraza atardecer", "Terraza baja", "Sala central", "Sala superior") NULL DEFAULT NULL,
-  `capacidad_sal` INT(3) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_sal`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
--- -----------------------------------------------------
--- Table `bd_restaurante`.`tbl_mesa`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_restaurante`.`tbl_mesa` (
-  `id_mes` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre_mes` VARCHAR(45) NULL DEFAULT NULL,
-  `status_mes` ENUM("Libre", "Mantenimiento", "Ocupado/Reservado") NOT NULL,
-  `capacidad_mes` INT(3) NOT NULL,
-  `id_sal_fk` INT(11) NOT NULL,
-  PRIMARY KEY (`id_mes`),
-  INDEX `fk_sala_mesa_idx` (`id_sal_fk` ASC),
-  CONSTRAINT `fk_sala_mesa`
-    FOREIGN KEY (`id_sal_fk`)
-    REFERENCES `bd_restaurante`.`tbl_sala` (`id_sal`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Base de datos: `bd_restaurante`
+--
 
--- -----------------------------------------------------
--- Table `bd_restaurante`.`tbl_usuario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_restaurante`.`tbl_usuario` (
-  `id_use` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre_use` VARCHAR(45) NULL DEFAULT NULL,
-  `email_use` VARCHAR(50) NOT NULL,
-  `pwd_use` VARCHAR(50) NOT NULL,
-  `tipo_use` ENUM('Camarero', 'Admin', 'Mantenimiento') NOT NULL,
-  PRIMARY KEY (`id_use`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `tbl_mesa`
+--
 
--- -----------------------------------------------------
--- Table `bd_restaurante`.`tbl_reserva`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_restaurante`.`tbl_reserva` (
-  `id_res` INT(11) NOT NULL AUTO_INCREMENT,
-  `horaIni_res` TIME NOT NULL,
-  `horaFin_res` TIME NULL DEFAULT NULL,
-  `datos_res` VARCHAR(30) NOT NULL,
-  `id_use_fk` INT(11) NOT NULL,
-  `id_mes_fk` INT(11) NOT NULL,
-  PRIMARY KEY (`id_res`),
-  INDEX `fk_mesa_reserva_idx` (`id_mes_fk` ASC),
-  INDEX `fk_usuario_reserva_idx` (`id_use_fk` ASC),
-  CONSTRAINT `fk_mesa_reserva`
-    FOREIGN KEY (`id_mes_fk`)
-    REFERENCES `bd_restaurante`.`tbl_mesa` (`id_mes`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_usuario_reserva`
-    FOREIGN KEY (`id_use_fk`)
-    REFERENCES `bd_restaurante`.`tbl_usuario` (`id_use`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+CREATE TABLE `tbl_mesa` (
+  `id_mes` int(11) NOT NULL,
+  `nombre_mes` varchar(45) DEFAULT NULL,
+  `status_mes` enum('Libre','Mantenimiento','Ocupado/Reservado') NOT NULL,
+  `capacidad_mes` int(3) NOT NULL,
+  `id_sal_fk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tbl_mesa`
+--
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+INSERT INTO `tbl_mesa` (`id_mes`, `nombre_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES
+(1, NULL, 'Ocupado/Reservado', 2, 1),
+(2, NULL, 'Libre', 2, 1),
+(3, NULL, 'Libre', 4, 1),
+(4, NULL, 'Libre', 4, 1),
+(5, NULL, 'Libre', 4, 1),
+(6, NULL, 'Libre', 2, 2),
+(7, NULL, 'Libre', 2, 2),
+(8, NULL, 'Libre', 4, 2),
+(9, NULL, 'Libre', 4, 2),
+(10, NULL, 'Libre', 4, 2),
+(11, NULL, 'Libre', 6, 2),
+(12, NULL, 'Libre', 6, 2),
+(13, NULL, 'Libre', 2, 3),
+(14, NULL, 'Libre', 2, 3),
+(15, NULL, 'Libre', 4, 3),
+(16, NULL, 'Libre', 4, 3),
+(17, NULL, 'Libre', 4, 3),
+(18, NULL, 'Libre', 4, 3),
+(19, NULL, 'Libre', 6, 3),
+(20, NULL, 'Libre', 6, 3),
+(21, NULL, 'Libre', 6, 3),
+(22, NULL, 'Libre', 10, 3),
+(23, NULL, 'Libre', 2, 4),
+(24, NULL, 'Libre', 2, 4),
+(25, NULL, 'Libre', 2, 4),
+(26, NULL, 'Libre', 2, 4),
+(27, NULL, 'Libre', 2, 4),
+(28, NULL, 'Libre', 2, 4),
+(29, NULL, 'Libre', 2, 4),
+(30, NULL, 'Libre', 2, 4),
+(31, NULL, 'Libre', 2, 4),
+(32, NULL, 'Libre', 2, 4),
+(33, NULL, 'Libre', 2, 4),
+(34, NULL, 'Libre', 2, 4),
+(35, NULL, 'Libre', 4, 4),
+(36, NULL, 'Libre', 4, 4),
+(37, NULL, 'Libre', 2, 5),
+(38, NULL, 'Libre', 2, 5),
+(39, NULL, 'Libre', 4, 5),
+(40, NULL, 'Libre', 4, 5),
+(41, NULL, 'Libre', 4, 5),
+(42, NULL, 'Libre', 4, 5),
+(43, NULL, 'Libre', 4, 5),
+(44, NULL, 'Libre', 4, 5);
 
+-- --------------------------------------------------------
 
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza luna', '16');/*2x dos personas || 3x cuatro personas */
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Terraza estrellas', '28');/*2x dos personas || 3x cuatro personas || 2x seis personas*/
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Salón sol', '48');/*4x dos personas || 4x cuatro personas || 3x seis personas || 1x diez personas*/
+--
+-- Estructura de tabla para la tabla `tbl_reserva`
+--
 
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Sala romance', '28');/*12x dos personas || 2x cuatro personas */
-INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`) VALUES (NULL, 'Sala gourmet', '28');/*2x dos personas || 6x cuatro personas */
+CREATE TABLE `tbl_reserva` (
+  `id_res` int(11) NOT NULL,
+  `horaIni_res` datetime NOT NULL,
+  `horaFin_res` datetime DEFAULT NULL,
+  `datos_res` varchar(30) NOT NULL,
+  `id_use_fk` int(11) NOT NULL,
+  `id_mes_fk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tbl_reserva`
+--
 
-INSERT INTO `tbl_usuario` (`id_use`, `nombre_use`, `email_use`, `pwd_use`, `tipo_use`) VALUES (NULL, 'Alfredo', 'blumal@fje.edu', MD5('1234'), 'Camarero');
-INSERT INTO `tbl_usuario` (`id_use`, `nombre_use`, `email_use`, `pwd_use`, `tipo_use`) VALUES (NULL, 'Isaac', 'isaac@fje.edu', MD5('1234'), 'Camarero');
-INSERT INTO `tbl_usuario` (`id_use`, `nombre_use`, `email_use`, `pwd_use`, `tipo_use`) VALUES (NULL, 'Raul', 'raulseleccion@fje.edu', MD5('qweQWE123'), 'Camarero');
+INSERT INTO `tbl_reserva` (`id_res`, `horaIni_res`, `horaFin_res`, `datos_res`, `id_use_fk`, `id_mes_fk`) VALUES
+(1, '2021-11-05 19:10:41', '2021-11-05 17:37:26', 'Loko', 2, 2),
+(3, '2021-11-05 17:04:34', '2021-11-05 17:30:02', 'Starkiller', 2, 8);
 
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '1');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '1');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '1');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '1');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '1');/*fin sala 1 terraza*/
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '2');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '2');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '2');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '2');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '2');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '6', '2');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '6', '2');/*fin sala 2 terraza*/
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '6', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '6', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '6', '3');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '10', '3');/*fin sala 3 salón*/
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '4');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '4');/*fin sala 4 sala*/
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '5');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '2', '5');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');
-INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES (NULL, 'Libre', '4', '5');/*fin sala 5 sala*/
+-- --------------------------------------------------------
 
-INSERT INTO `tbl_reserva` (`id_res`, `horaIni_res`, `horaFin_res`, `datos_res`, `id_use_fk`, `id_mes_fk`) VALUES (NULL, '19:10:41', NULL, 'Reserva Google', '2', '2');
+--
+-- Estructura de tabla para la tabla `tbl_sala`
+--
+
+CREATE TABLE `tbl_sala` (
+  `id_sal` int(11) NOT NULL,
+  `nombre_sal` varchar(50) DEFAULT NULL,
+  `capacidad_sal` int(3) DEFAULT NULL,
+  `imagen_sal` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_sala`
+--
+
+INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`, `imagen_sal`) VALUES
+(1, 'Sala romance', 16, 'heart-dynamic-color.png'),
+(2, 'Salón Sol', 28, 'sun-dynamic-color.png'),
+(3, 'Sala gourmet', 48, 'glass-dynamic-color.png'),
+(4, 'Terraza Luna', 28, 'moon-dynamic-clay.png'),
+(5, 'Terraza estrellas', 28, 'star-dynamic-color.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_usuario`
+--
+
+CREATE TABLE `tbl_usuario` (
+  `id_use` int(11) NOT NULL,
+  `nombre_use` varchar(45) DEFAULT NULL,
+  `email_use` varchar(50) NOT NULL,
+  `pwd_use` varchar(50) NOT NULL,
+  `tipo_use` enum('Camarero','Admin','Mantenimiento') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_usuario`
+--
+
+INSERT INTO `tbl_usuario` (`id_use`, `nombre_use`, `email_use`, `pwd_use`, `tipo_use`) VALUES
+(1, 'Alfredo', 'blumal@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 'Camarero'),
+(2, 'Isaac', 'isaac@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 'Camarero'),
+(3, 'Raul', 'raulseleccion@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'Camarero');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `tbl_mesa`
+--
+ALTER TABLE `tbl_mesa`
+  ADD PRIMARY KEY (`id_mes`),
+  ADD KEY `fk_sala_mesa_idx` (`id_sal_fk`);
+
+--
+-- Indices de la tabla `tbl_reserva`
+--
+ALTER TABLE `tbl_reserva`
+  ADD PRIMARY KEY (`id_res`),
+  ADD KEY `fk_mesa_reserva_idx` (`id_mes_fk`),
+  ADD KEY `fk_usuario_reserva_idx` (`id_use_fk`);
+
+--
+-- Indices de la tabla `tbl_sala`
+--
+ALTER TABLE `tbl_sala`
+  ADD PRIMARY KEY (`id_sal`);
+
+--
+-- Indices de la tabla `tbl_usuario`
+--
+ALTER TABLE `tbl_usuario`
+  ADD PRIMARY KEY (`id_use`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_mesa`
+--
+ALTER TABLE `tbl_mesa`
+  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_reserva`
+--
+ALTER TABLE `tbl_reserva`
+  MODIFY `id_res` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_sala`
+--
+ALTER TABLE `tbl_sala`
+  MODIFY `id_sal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_usuario`
+--
+ALTER TABLE `tbl_usuario`
+  MODIFY `id_use` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `tbl_mesa`
+--
+ALTER TABLE `tbl_mesa`
+  ADD CONSTRAINT `fk_sala_mesa` FOREIGN KEY (`id_sal_fk`) REFERENCES `tbl_sala` (`id_sal`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tbl_reserva`
+--
+ALTER TABLE `tbl_reserva`
+  ADD CONSTRAINT `fk_mesa_reserva` FOREIGN KEY (`id_mes_fk`) REFERENCES `tbl_mesa` (`id_mes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_usuario_reserva` FOREIGN KEY (`id_use_fk`) REFERENCES `tbl_usuario` (`id_use`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

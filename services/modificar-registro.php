@@ -1,5 +1,6 @@
 <?php
 include '../services/connection.php';
+include '../services/reserva.php';
 $nombre = $_POST['nombre'];
 $registro = $_POST['registro'];
 

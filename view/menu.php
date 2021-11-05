@@ -17,6 +17,11 @@
 
 </head>
 <body>
+    <?php
+    session_start();
+    if (isset($_SESSION['email']))
+    {
+    ?>
     <div class="region-salas">
         <div class="grid-salas flex-cv">
         <?php 
@@ -76,5 +81,11 @@
             ?>
 
     </div>
+    <?php
+    }else
+    {
+        header("Location:../View/login.php");
+    }
+    ?>
 </body>
 </html>

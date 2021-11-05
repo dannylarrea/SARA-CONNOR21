@@ -15,56 +15,128 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<?php
+    session_start();
+    if (isset($_SESSION['email']))
+    {
+    ?>
     <div class="region-mesas">
-  
+            
             <div class="grid-mesas flex-cv">
+                <?php
+                include '../services/mesa.php';
+                include '../services/connection.php';
+                $mesa=$pdo->prepare("SELECT * from tbl_mesa WHERE id_sal_fk=1");
+                $mesa->execute();
+                $mesa=$mesa->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($mesa as $mesa) {
+
+                ?>
                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
+                    <?php
+                    if($mesa['capacidad_mes'] ==2)
+                    {
+                        if($mesa['status_mes'] =="Libre")
+                        {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 2 personas libre"><?php
+                        
+                        }
+                        elseif($mesa['status_mes'] =="Ocupado/Reservado")
+                        {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 2 personas ocupado"><?php
+                        }
+                        else {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 2 personas mantenimiento"><?php
+                        }
+                        
+                    }
+                    elseif($mesa['capacidad_mes'] ==4)
+                    {
+                        if($mesa['status_mes'] =="Libre")
+                        {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas libre"><?php
+                        
+                        }
+                        elseif($mesa['status_mes'] =="Ocupado/Reservado")
+                        {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas ocupado"><?php
+                        }
+                        else {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 6 personas mantenimiento"><?php
+                        }
+                        
+                    }
+                    else
+                    {
+                        if($mesa['status_mes'] =="Libre")
+                        {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 6 personas libre"><?php
+                        
+                        }
+                        elseif($mesa['status_mes'] =="Ocupado/Reservado")
+                        {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 6 personas ocupado"><?php
+                        }
+                        else {
+                            ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 6 personas mantenimiento"><?php
+                        }
+                        
+                    }
+
+                    ?>
                 </div>
-                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
-                </div>
-                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
-                </div>
-                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
-                </div>
-                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
-                </div>
+
+
+    
+
+                
+                <?php
+                }
+                ?>
 
             </div>
       
     </div>
+
+    <?php 
+    /*
+    falta enviar id_mes, el responsable en los popup, recibir el id_res en popup modificar
+    */
+    ?>
     <div class="overlay" id="overlay">
         <div class="abrirReserva" id="abrirReserva">
             <div class="popup" id="popup">
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
                 <h3>Reservar mesa</h3>
-                <form METHOD='POST' action="../insertar.php">
+                <form METHOD='POST' action="../services/reservar-mesa.php">
                     <label for="nombre">Nombre de la reserva</label>
                     <input type="text" id="nombre" name="nombre">
-                    <label for="numper">Número de personas</label>
-                    <input type="numeric" id="numper" name="numper">
-                    <input type="submit" value="insertar" class="btn">
+                    <input type='hidden' name='sala' value=sala1.php>
+                    <input type="submit" value="Reservar" class="btn">
                 </form>
             </div>
         </div>
+
+
         <div class="cerrarReserva" id="cerrarReserva">
             <div class="popup" id="popup2">
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
                 <h3>Modificar usuario</h3>
-                <label for="nombre">Nombre de la reserva</label>
-                <input type="text" id="nombre" name="nombre" readonly>
-                <label for="numper">Número de personas</label>
-                <input type="numeric" id="numper" name="numper" readonly>
-                <input type="submit" value="insertar" class="btn">
-                <form METHOD='POST' action="../modificar.php">
-
+                <form METHOD='POST' action="../services/modificar-registro.php">
+                    <label for="nombre">Nombre de la reserva</label>
+                    <input type="text" id="nombre" name="nombre" readonly>
+                    <input type='hidden' name='sala' value=sala1.php>>
+                    <input type="submit" value="insertar" class="btn">
                 </form>
             </div>
         </div>
     </div>
+    <?php
+    }else
+    {
+        header("Location:../View/login.php");
+    }
+    ?>
 </body>
 </html>

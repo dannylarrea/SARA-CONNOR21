@@ -7,6 +7,7 @@ $registro = $_POST['registro'];
 
 
 
+
 $stmt=$pdo->prepare("UPDATE `tbl_reserva` SET `datos_res` = ? WHERE `tbl_reserva`.`id_res` = ?");
 $stmt->bindParam(1, $nombre);
 $stmt->bindParam(2, $registro);

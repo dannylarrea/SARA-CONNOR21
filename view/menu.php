@@ -19,110 +19,62 @@
 <body>
     <div class="region-salas">
         <div class="grid-salas flex-cv">
-            
-            
-            <div class="sala" id="sala1">
-                <img src="../media/icons/heart-dynamic-color.png" alt="">
-                <h2>Sala romance</h2>
+        <?php 
+                    include '../services/sala.php';
+                    include '../services/mesa.php';
+                    include '../services/connection.php';
+                    $salas=$pdo->prepare("SELECT * from tbl_sala");
+                    $salas->execute();
+                    $salas=$salas->fetchAll(PDO::FETCH_ASSOC);
+
+                    foreach ($salas as $salas) {
+
+                        $capacidad_libre=$pdo->prepare("SELECT SUM(capacidad_mes) from tbl_mesa where status_mes = 'Libre' && id_sal_fk=?");
+                        $capacidad_libre->bindParam(1, $salas['id_sal']);
+                        $capacidad_libre->execute();
+                        $capacidad_libre = $capacidad_libre->fetch(PDO::FETCH_NUM);
+
+
+                        $mesas_libres=$pdo->prepare("SELECT * from tbl_mesa WHERE status_mes = 'Libre' && id_sal_fk = ?");
+                        $mesas_libres->bindParam(1, $salas['id_sal']);
+                        $mesas_libres->execute();
+                        $mesas_libres=$mesas_libres->fetchAll(PDO::FETCH_ASSOC);
+
+
+                        $mesas_ocupadas=$pdo->prepare("SELECT * from tbl_mesa WHERE status_mes = 'Ocupado/Reservado' && id_sal_fk = ?");
+                        $mesas_ocupadas->bindParam(1, $salas['id_sal']);
+                        $mesas_ocupadas->execute();
+                        $mesas_ocupadas=$mesas_ocupadas->fetchAll(PDO::FETCH_ASSOC);
+    
+                ?>
+            <div class="sala">
+            <img src="../media/icons/<?php echo $salas['imagen_sal']?>" alt="">
+                <h2><?php echo $salas['nombre_sal'] ?></h2>
                 <table>
                     <tbody>
                         <tr>
-                            <th>Capacidad total sala: </th>
-                            <td>24 personas</td>
+                            <th>Capacidad total: </th>
+                            <td><?php echo $salas['capacidad_sal'] ?> personas</td>
+                        </tr>
+                        <tr>
+                            <th>Capacidad libre: </th>
+                            <td><?php echo  $capacidad_libre[0]?> personas</td>
                         </tr>
                         <tr>
                             <th>Mesas Libres: </th>
-                            <td>2 mesas</td>
+                            <td><?php echo count($mesas_libres) ?> mesas</td>
                         </tr>
                         <tr>
                             <th>Mesas ocupadas: </th>
-                            <td>2 mesas</td>
+                            <td><?php echo count($mesas_ocupadas) ?> mesas</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="sala" id="sala2">
-                <img src="../media/icons/sun-dynamic-color.png" alt="">
-                <h2>Salón Sol</h2>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Capacidad total sala: </th>
-                            <td>24 personas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas Libres: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas ocupadas: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="sala" id="sala3">
-                <img src="../media/icons/glass-dynamic-color.png" alt="">
-                <h2>Sala gourmet</h2>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Capacidad total sala: </th>
-                            <td>24 personas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas Libres: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas ocupadas: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="sala" id="sala4">
-                <img src="../media/icons/moon-dynamic-clay.png" alt="">
-                <h2>Terraza Luna</h2>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Capacidad total sala: </th>
-                            <td>24 personas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas Libres: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas ocupadas: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="sala" id="sala5">
-                <img src="../media/icons/star-dynamic-color.png" alt="">
-                <h2>Terraza estrellas</h2>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Capacidad total sala: </th>
-                            <td>24 personas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas Libres: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                        <tr>
-                            <th>Mesas ocupadas: </th>
-                            <td>2 mesas</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-        </div>
+            <?php 
+                    }
+            ?>
+
     </div>
 </body>
 </html>

@@ -16,23 +16,41 @@
 </head>
 <body>
     <div class="region-mesas">
-  
+            
             <div class="grid-mesas flex-cv">
+                <?php
+                include '../services/mesa.php';
+                include '../services/connection.php';
+                $mesa=$pdo->prepare("SELECT * from tbl_mesa WHERE id_sal_fk=1");
+                $mesa->execute();
+                $mesa=$mesa->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($mesa as $mesa) {
+
+                ?>
                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
+                    <?php
+                    if($mesa['capacidad_mes'] ==2)
+                    {
+                        ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 2 personas">
+                        <?php
+                    }
+                    elseif($mesa['capacidad_mes'] ==4)
+                    {
+                        ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">
+                            <?php
+                    }
+                    elseif($mesa['capacidad_mes'] ==6)
+                    {
+                        ?> <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 6 personas">
+                            <?php
+                    }
+
+                    ?>
                 </div>
-                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
-                </div>
-                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
-                </div>
-                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
-                </div>
-                <div class="mesa">
-                   <img class="btn-abrirPop mesasvg mesa-3q"src="../media/mesa4.svg" alt="mesa 4 personas">   
-                </div>
+                 <?php
+                }
+                ?>
 
             </div>
       

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2021 a las 18:37:17
+-- Tiempo de generación: 05-11-2021 a las 19:35:19
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -129,7 +129,7 @@ INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`, `imagen_sal`) V
 (1, 'Sala romance', 16, 'heart-dynamic-color.png'),
 (2, 'Salón Sol', 28, 'sun-dynamic-color.png'),
 (3, 'Sala gourmet', 48, 'glass-dynamic-color.png'),
-(4, 'Terraza Luna', 28, 'moon-dynamic-clay.png'),
+(4, 'Terraza Luna', 32, 'moon-dynamic-clay.png'),
 (5, 'Terraza estrellas', 28, 'star-dynamic-color.png');
 
 -- --------------------------------------------------------

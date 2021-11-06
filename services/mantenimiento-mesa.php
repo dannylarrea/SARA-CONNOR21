@@ -1,11 +1,12 @@
 <?php
 include '../services/connection.php';
+include '../services/mesa.php';
 
 $mesa = $_POST['mesa'];
 
 if(isset($_POST['mantenimiento']))
 {
-$stmt=$pdo->prepare("UPDATE `tbl_mesa` SET `status_mes` = 'Mantenimiento' WHERE `tbl_mesa`.`id_mes` = ?");
+    $stmt=$pdo->prepare("UPDATE `tbl_mesa` SET `status_mes` = 'Mantenimiento' WHERE `tbl_mesa`.`id_mes` = ?");
     $stmt->bindParam(1, $mesa);
     $stmt->execute();
 

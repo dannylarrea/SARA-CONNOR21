@@ -26,10 +26,10 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `tbl_mesa`
 --
-
+create database `bd_restaurante`;
+use `bd_restaurante`;
 CREATE TABLE `tbl_mesa` (
   `id_mes` int(11) NOT NULL,
-  `nombre_mes` varchar(45) DEFAULT NULL,
   `status_mes` enum('Libre','Mantenimiento','Ocupado/Reservado') NOT NULL,
   `capacidad_mes` int(3) NOT NULL,
   `id_sal_fk` int(11) NOT NULL
@@ -39,51 +39,57 @@ CREATE TABLE `tbl_mesa` (
 -- Volcado de datos para la tabla `tbl_mesa`
 --
 
-INSERT INTO `tbl_mesa` (`id_mes`, `nombre_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES
-(1, NULL, 'Ocupado/Reservado', 2, 1),
-(2, NULL, 'Libre', 2, 1),
-(3, NULL, 'Libre', 4, 1),
-(4, NULL, 'Libre', 4, 1),
-(5, NULL, 'Libre', 4, 1),
-(6, NULL, 'Libre', 2, 2),
-(7, NULL, 'Libre', 2, 2),
-(8, NULL, 'Libre', 4, 2),
-(9, NULL, 'Libre', 4, 2),
-(10, NULL, 'Libre', 4, 2),
-(11, NULL, 'Libre', 6, 2),
-(12, NULL, 'Libre', 6, 2),
-(13, NULL, 'Libre', 2, 3),
-(14, NULL, 'Libre', 2, 3),
-(15, NULL, 'Libre', 4, 3),
-(16, NULL, 'Libre', 4, 3),
-(17, NULL, 'Libre', 4, 3),
-(18, NULL, 'Libre', 4, 3),
-(19, NULL, 'Libre', 6, 3),
-(20, NULL, 'Libre', 6, 3),
-(21, NULL, 'Libre', 6, 3),
-(22, NULL, 'Libre', 10, 3),
-(23, NULL, 'Libre', 2, 4),
-(24, NULL, 'Libre', 2, 4),
-(25, NULL, 'Libre', 2, 4),
-(26, NULL, 'Libre', 2, 4),
-(27, NULL, 'Libre', 2, 4),
-(28, NULL, 'Libre', 2, 4),
-(29, NULL, 'Libre', 2, 4),
-(30, NULL, 'Libre', 2, 4),
-(31, NULL, 'Libre', 2, 4),
-(32, NULL, 'Libre', 2, 4),
-(33, NULL, 'Libre', 2, 4),
-(34, NULL, 'Libre', 2, 4),
-(35, NULL, 'Libre', 4, 4),
-(36, NULL, 'Libre', 4, 4),
-(37, NULL, 'Libre', 2, 5),
-(38, NULL, 'Libre', 2, 5),
-(39, NULL, 'Libre', 4, 5),
-(40, NULL, 'Libre', 4, 5),
-(41, NULL, 'Libre', 4, 5),
-(42, NULL, 'Libre', 4, 5),
-(43, NULL, 'Libre', 4, 5),
-(44, NULL, 'Libre', 4, 5);
+INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES
+(1, 'Libre', 2, 1),
+(2, 'Libre', 2, 1),
+(3, 'Libre', 2, 1),
+(4, 'Libre', 2, 1),
+(5, 'Libre', 2, 1),
+(6, 'Libre', 2, 1),
+(7, 'Libre', 2, 1),
+(8, 'Libre', 2, 1),
+(9, 'Libre', 2, 1),
+(10, 'Libre', 2, 1),
+(11, 'Libre', 2, 1),
+(12, 'Libre', 2, 1),
+(13, 'Libre', 4, 1),
+(14, 'Libre', 4, 1),
+(15, 'Libre', 2, 2),
+(16, 'Libre', 2, 2),
+(17, 'Libre', 2, 2),
+(18, 'Libre', 2, 2),
+(19, 'Libre', 4, 2),
+(20, 'Libre', 4, 2),
+(21, 'Libre', 4, 2),
+(22, 'Libre', 4, 2),
+(23, 'Libre', 6, 2),
+(24, 'Libre', 6, 2),
+(25, 'Libre', 6, 2),
+(26, 'Libre', 10, 2),
+(27, 'Libre', 2, 3),
+(28, 'Libre', 2, 3),
+(29, 'Libre', 4, 3),
+(30, 'Libre', 4, 3),
+(31, 'Libre', 4, 3),
+(32, 'Libre', 4, 3),
+(33, 'Libre', 4, 3),
+(34, 'Libre', 4, 3),
+(35, 'Libre', 2, 4),
+(36, 'Libre', 2, 4),
+(37, 'Libre', 4, 4),
+(38, 'Libre', 4, 4),
+(39, 'Libre', 4, 4),
+(40, 'Libre', 6, 4),
+(41, 'Libre', 6, 4),
+(42, 'Ocupado/Reservado', 2, 5),
+(43, 'Libre', 2, 5),
+(44, 'Libre', 4, 5),
+(45, 'Libre', 4, 5),
+(46, 'Libre', 4, 5);
+
+
+
+
 
 -- --------------------------------------------------------
 
@@ -105,7 +111,7 @@ CREATE TABLE `tbl_reserva` (
 --
 
 INSERT INTO `tbl_reserva` (`id_res`, `horaIni_res`, `horaFin_res`, `datos_res`, `id_use_fk`, `id_mes_fk`) VALUES
-(1, '2021-11-05 19:10:41', '2021-11-05 17:37:26', 'Loko', 2, 2),
+(1, '2021-11-05 19:10:41', '2021-11-05 17:37:26', 'Loko', 2, 2 ),
 (3, '2021-11-05 17:04:34', '2021-11-05 17:30:02', 'Starkiller', 2, 8);
 
 -- --------------------------------------------------------
@@ -126,11 +132,11 @@ CREATE TABLE `tbl_sala` (
 --
 
 INSERT INTO `tbl_sala` (`id_sal`, `nombre_sal`, `capacidad_sal`, `imagen_sal`) VALUES
-(1, 'Sala romance', 16, 'heart-dynamic-color.png'),
-(2, 'Salón Sol', 28, 'sun-dynamic-color.png'),
-(3, 'Sala gourmet', 48, 'glass-dynamic-color.png'),
-(4, 'Terraza Luna', 32, 'moon-dynamic-clay.png'),
-(5, 'Terraza estrellas', 28, 'star-dynamic-color.png');
+(1, 'Sala romance', 32, 'heart-dynamic-color.png'),
+(2, 'Salón Sol', 52, 'sun-dynamic-color.png'),
+(3, 'Sala gourmet', 28, 'glass-dynamic-color.png'),
+(4, 'Terraza Luna', 28, 'moon-dynamic-clay.png'),
+(5, 'Terraza estrellas', 16, 'star-dynamic-color.png');
 
 -- --------------------------------------------------------
 
@@ -194,7 +200,7 @@ ALTER TABLE `tbl_usuario`
 -- AUTO_INCREMENT de la tabla `tbl_mesa`
 --
 ALTER TABLE `tbl_mesa`
-  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_reserva`
@@ -229,7 +235,8 @@ ALTER TABLE `tbl_mesa`
 --
 ALTER TABLE `tbl_reserva`
   ADD CONSTRAINT `fk_mesa_reserva` FOREIGN KEY (`id_mes_fk`) REFERENCES `tbl_mesa` (`id_mes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_usuario_reserva` FOREIGN KEY (`id_use_fk`) REFERENCES `tbl_usuario` (`id_use`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_usuario_reserva` FOREIGN KEY (`id_use_fk`) REFERENCES `tbl_usuario` (`id_use`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

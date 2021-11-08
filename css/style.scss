@@ -64,6 +64,10 @@ $grid-float-breakpoint: 1200px;
 body {
     height: 100%;
     width: 100%;
+    min-height: 100vh;
+    &.menu {
+        background: $color5;
+    }
 }
 
 ///////////////////////////////////////////////////
@@ -125,6 +129,7 @@ body {
             height: 100%;
             background: $color3;
             margin: 10px;
+            position: relative;
             @extend .flex-cv;
             @extend .shadow1;
             flex-flow: column wrap;
@@ -154,6 +159,16 @@ body {
                 // grid-row: 2 / 3;
                 grid-area: 2/3/2/1 span;
             }
+            >a,
+            >form,
+            >form input[type="submit"] {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+            }
+            >form input[type="submit"] {
+                opacity: 0;
+            }
             &:hover {
                 transform: scale(1.1);
             }
@@ -182,11 +197,136 @@ body {
 }
 
 .region-mesas {
+    .grid-mesas {
+        display: grid;
+        grid-gap: 75px;
+    }
     .mesa {
         @extend .flex-cv;
         flex-flow: column;
         img {
-            max-height: 250px;
+            max-height: 120px;
+            &.ocupada {
+                filter: invert(33%) sepia(98%) saturate(7468%) hue-rotate(358deg) brightness(93%) contrast(119%);
+            }
+        }
+    }
+    &.sala1 {
+        .grid-mesas {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        .mesa {
+            &:nth-child(1) {}
+            &:nth-child(2) {}
+            &:nth-child(3) {}
+            &:nth-child(4) {}
+            &:nth-child(5) {}
+            &:nth-child(6) {}
+            &:nth-child(7) {}
+            &:nth-child(8) {}
+            &:nth-child(9) {}
+            &:nth-child(10) {}
+            &:nth-child(11) {}
+            &:nth-child(12) {}
+            &:nth-child(13) {
+                grid-area: 4/1/4/2 span;
+            }
+            &:nth-child(14) {
+                grid-area: 4/3/4/2 span;
+            }
+        }
+    }
+    &.sala2 {
+        .grid-mesas {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+        }
+        .mesa {
+            &:nth-child(1) {}
+            &:nth-child(2) {}
+            &:nth-child(3) {}
+            &:nth-child(4) {}
+            &:nth-child(5) {}
+            &:nth-child(6) {}
+            &:nth-child(7) {}
+            &:nth-child(8) {}
+            &:nth-child(9) {
+                grid-area: 3/2/4/1 span;
+            }
+            &:nth-child(10) {
+                grid-area: 3/3/4/1 span;
+            }
+            &:nth-child(11) {
+                grid-area: 3/4/4/1 span;
+            }
+            &:nth-child(12) {
+                grid-area: 5/1/4/4 span;
+            }
+        }
+    }
+    &.sala3 {
+        .grid-mesas {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        .mesa {
+            &:nth-child(1) {}
+            &:nth-child(2) {}
+            &:nth-child(3) {}
+            &:nth-child(4) {}
+            &:nth-child(5) {}
+            &:nth-child(6) {}
+            &:nth-child(7) {}
+            &:nth-child(8) {}
+        }
+    }
+    &.sala4 {
+        .grid-mesas {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        .mesa {
+            &:nth-child(1) {
+                grid-area: 1/2/1/1 span;
+            }
+            &:nth-child(2) {
+                grid-area: 1/4/1/1 span;
+            }
+            &:nth-child(3) {
+                grid-area: 2/1/2/1 span;
+            }
+            &:nth-child(4) {
+                grid-area: 2/2/2/1 span;
+            }
+            &:nth-child(5) {
+                grid-area: 2/3/2/1 span;
+            }
+            &:nth-child(6) {
+                grid-area: 2/4/2/1 span;
+            }
+            &:nth-child(7) {
+                grid-area: 2/5/2/1 span;
+            }
+        }
+    }
+    &.sala5 {
+        .grid-mesas {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        .mesa {
+            &:nth-child(1) {
+                grid-area: 1/2/1/1 span;
+            }
+            &:nth-child(2) {
+                grid-area: 1/4/1/1 span;
+            }
+            &:nth-child(3) {
+                grid-area: 2/1/2/1 span;
+            }
+            &:nth-child(4) {
+                grid-area: 2/3/2/1 span;
+            }
+            &:nth-child(5) {
+                grid-area: 2/4/2/1 span;
+            }
         }
     }
 }

@@ -35,7 +35,7 @@
                 echo "</select><br><br>"
 
             ?>
-        <input type="submit" value="Filtrar"><br>
+        <input type="submit" value="Filtrar">
     </form>
     <?php 
         //include '../services/connection.php';

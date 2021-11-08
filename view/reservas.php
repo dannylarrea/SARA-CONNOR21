@@ -4,9 +4,6 @@
 </head>
 
 <body>
-    <center>
-        <h1>Historial de reservas</h1>
-    </center>
     <form action="./reservas.php" method="POST">
         <h1>Búsqueda de reservas</h1>
         <p>Hora de reserva:</p> 
@@ -44,6 +41,9 @@
         ?>
         <input type="submit" value="Filtrar"><br><br>
     </form>
+    <center>
+        <h1>Historial de reservas</h1>
+    </center>
     <?php 
         //include '../services/connection.php';
         $reserva=$pdo->prepare("SELECT r.id_res, r.horaIni_res, r.horaFin_res, r.datos_res, u.nombre_use, m.id_mes, s.nombre_sal

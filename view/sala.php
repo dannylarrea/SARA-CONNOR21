@@ -91,7 +91,7 @@
                 <form METHOD='POST' action="../services/reservar-mesa.php">
                     <label for="nombre">Nombre de la reserva</label>
                     <input type="text" id="nombre" name="nombre">
-                    <input type='hidden' name='sala' value=sala1.php>
+                    <input type="hidden" name="responsable" value="<?php echo $_SESSION['email'] ?>">
                     <input type="submit" value="Reservar" class="btn">
                 </form>
             </div>
@@ -105,7 +105,6 @@
                 <form METHOD='POST' action="../services/modificar-registro.php">
                     <label for="nombre">Nombre de la reserva</label>
                     <input type="text" id="nombre" name="nombre" readonly>
-                    <input type='hidden' name='sala' value=sala1.php>
                     <select name="accion">
                         <option value="finalizar">Finalizar</option>
                         <option value="cancelar">Cancelar</option>

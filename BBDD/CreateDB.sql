@@ -30,7 +30,6 @@ create database `bd_restaurante`;
 use `bd_restaurante`;
 CREATE TABLE `tbl_mesa` (
   `id_mes` int(11) NOT NULL,
-  `nombre_mes` varchar(45) DEFAULT NULL,
   `status_mes` enum('Libre','Mantenimiento','Ocupado/Reservado') NOT NULL,
   `capacidad_mes` int(3) NOT NULL,
   `id_sal_fk` int(11) NOT NULL
@@ -40,53 +39,53 @@ CREATE TABLE `tbl_mesa` (
 -- Volcado de datos para la tabla `tbl_mesa`
 --
 
-INSERT INTO `tbl_mesa` (`id_mes`, `nombre_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES
-(1, NULL, 'Libre', 2, 1),
-(2, NULL, 'Libre', 2, 1),
-(3, NULL, 'Libre', 2, 1),
-(4, NULL, 'Libre', 2, 1),
-(5, NULL, 'Libre', 2, 1),
-(6, NULL, 'Libre', 2, 1),
-(7, NULL, 'Libre', 2, 1),
-(8, NULL, 'Libre', 2, 1),
-(9, NULL, 'Libre', 2, 1),
-(10, NULL, 'Libre', 2, 1),
-(11, NULL, 'Libre', 2, 1),
-(12, NULL, 'Libre', 2, 1),
-(13, NULL, 'Libre', 4, 1),
-(14, NULL, 'Libre', 4, 1),
-(15, NULL, 'Libre', 2, 2),
-(16, NULL, 'Libre', 2, 2),
-(17, NULL, 'Libre', 2, 2),
-(18, NULL, 'Libre', 2, 2),
-(19, NULL, 'Libre', 4, 2),
-(20, NULL, 'Libre', 4, 2),
-(21, NULL, 'Libre', 4, 2),
-(22, NULL, 'Libre', 4, 2),
-(23, NULL, 'Libre', 6, 2),
-(24, NULL, 'Libre', 6, 2),
-(25, NULL, 'Libre', 6, 2),
-(26, NULL, 'Libre', 10, 2),
-(27, NULL, 'Libre', 2, 3),
-(28, NULL, 'Libre', 2, 3),
-(29, NULL, 'Libre', 4, 3),
-(30, NULL, 'Libre', 4, 3),
-(31, NULL, 'Libre', 4, 3),
-(32, NULL, 'Libre', 4, 3),
-(33, NULL, 'Libre', 4, 3),
-(34, NULL, 'Libre', 4, 3),
-(35, NULL, 'Libre', 2, 4),
-(36, NULL, 'Libre', 2, 4),
-(37, NULL, 'Libre', 4, 4),
-(38, NULL, 'Libre', 4, 4),
-(39, NULL, 'Libre', 4, 4),
-(40, NULL, 'Libre', 6, 4),
-(41, NULL, 'Libre', 6, 4),
-(42, NULL, 'Ocupado/Reservado', 2, 5),
-(43, NULL, 'Libre', 2, 5),
-(44, NULL, 'Libre', 4, 5),
-(45, NULL, 'Libre', 4, 5),
-(46, NULL, 'Libre', 4, 5);
+INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES
+(1, 'Libre', 2, 1),
+(2, 'Libre', 2, 1),
+(3, 'Libre', 2, 1),
+(4, 'Libre', 2, 1),
+(5, 'Libre', 2, 1),
+(6, 'Libre', 2, 1),
+(7, 'Libre', 2, 1),
+(8, 'Libre', 2, 1),
+(9, 'Libre', 2, 1),
+(10, 'Libre', 2, 1),
+(11, 'Libre', 2, 1),
+(12, 'Libre', 2, 1),
+(13, 'Libre', 4, 1),
+(14, 'Libre', 4, 1),
+(15, 'Libre', 2, 2),
+(16, 'Libre', 2, 2),
+(17, 'Libre', 2, 2),
+(18, 'Libre', 2, 2),
+(19, 'Libre', 4, 2),
+(20, 'Libre', 4, 2),
+(21, 'Libre', 4, 2),
+(22, 'Libre', 4, 2),
+(23, 'Libre', 6, 2),
+(24, 'Libre', 6, 2),
+(25, 'Libre', 6, 2),
+(26, 'Libre', 10, 2),
+(27, 'Libre', 2, 3),
+(28, 'Libre', 2, 3),
+(29, 'Libre', 4, 3),
+(30, 'Libre', 4, 3),
+(31, 'Libre', 4, 3),
+(32, 'Libre', 4, 3),
+(33, 'Libre', 4, 3),
+(34, 'Libre', 4, 3),
+(35, 'Libre', 2, 4),
+(36, 'Libre', 2, 4),
+(37, 'Libre', 4, 4),
+(38, 'Libre', 4, 4),
+(39, 'Libre', 4, 4),
+(40, 'Libre', 6, 4),
+(41, 'Libre', 6, 4),
+(42, 'Ocupado/Reservado', 2, 5),
+(43, 'Libre', 2, 5),
+(44, 'Libre', 4, 5),
+(45, 'Libre', 4, 5),
+(46, 'Libre', 4, 5);
 
 
 
@@ -104,17 +103,16 @@ CREATE TABLE `tbl_reserva` (
   `horaFin_res` datetime DEFAULT NULL,
   `datos_res` varchar(30) NOT NULL,
   `id_use_fk` int(11) NOT NULL,
-  `id_mes_fk` int(11) NOT NULL,
-  `id_sal_fk` int(11) NOT NULL
+  `id_mes_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tbl_reserva`
 --
 
-INSERT INTO `tbl_reserva` (`id_res`, `horaIni_res`, `horaFin_res`, `datos_res`, `id_use_fk`, `id_mes_fk`,`id_sal_fk`) VALUES
-(1, '2021-11-05 19:10:41', '2021-11-05 17:37:26', 'Loko', 2, 2, 1),
-(3, '2021-11-05 17:04:34', '2021-11-05 17:30:02', 'Starkiller', 2, 8, 1);
+INSERT INTO `tbl_reserva` (`id_res`, `horaIni_res`, `horaFin_res`, `datos_res`, `id_use_fk`, `id_mes_fk`) VALUES
+(1, '2021-11-05 19:10:41', '2021-11-05 17:37:26', 'Loko', 2, 2 ),
+(3, '2021-11-05 17:04:34', '2021-11-05 17:30:02', 'Starkiller', 2, 8);
 
 -- --------------------------------------------------------
 
@@ -238,7 +236,6 @@ ALTER TABLE `tbl_mesa`
 ALTER TABLE `tbl_reserva`
   ADD CONSTRAINT `fk_mesa_reserva` FOREIGN KEY (`id_mes_fk`) REFERENCES `tbl_mesa` (`id_mes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_usuario_reserva` FOREIGN KEY (`id_use_fk`) REFERENCES `tbl_usuario` (`id_use`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_sal_reserva` FOREIGN KEY (`id_sal_fk`) REFERENCES `tbl_mesa` (`id_sal_fk`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 COMMIT;
 

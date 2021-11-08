@@ -7,6 +7,48 @@ function showPass() {
     }
 }
 
+///////////////
+//settear cookie en el menu para la selección de salas
+//////////////
+$(document).ready(function() {
+    $(".sala").each(function(index) {
+        console.log(index + 1);
+        $(this).click(function() {
+            Cookies.set('sala', 'sala' + (index + 1))
+            $('.sala form').submit();
+        });
+
+
+    })
+
+
+});
+
+//////////////
+//Cargar sala cookie
+//////////////
+$(document).ready(function() {
+    if (Cookies.get('sala') != 'nada') {
+        console.log(Cookies.get('sala'));
+        $("body .region-mesas").addClass(Cookies.get('sala'));
+    }
+
+
+});
+
+//////////////
+//Poner si la mesa esta ocupadada
+//////////////
+$(document).ready(function() {
+    $(".mesa img").each(function(index) {
+        if ($(this).attr("data-status") == "Ocupado/Reservado") {
+            $(this).addClass('ocupada');
+            $(this).removeClass('btn-abrirPop');
+            $(this).addClass('btn-abrirPop2');
+        } else {}
+    })
+
+});
 //////////////
 //POPUP
 //////////////
@@ -24,15 +66,15 @@ $(document).ready(function() {
     });
 
 
-    // $(".btn-abrirPop2").click(function() {
-    //     $("#popup2").removeClass('hide');
-    //     $("#overlay").addClass('active');
-    //     $("#popup2").addClass('active');
-    //     $("#popup").addClass('hide');
+    $(".btn-abrirPop2").click(function() {
+        $("#popup2").removeClass('hide');
+        $("#overlay").addClass('active');
+        $("#popup2").addClass('active');
+        $("#popup").addClass('hide');
 
 
 
-    // });
+    });
 
 });
 

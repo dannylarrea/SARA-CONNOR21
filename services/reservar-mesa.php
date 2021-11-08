@@ -2,10 +2,21 @@
 include '../services/connection.php';
 include '../services/reserva.php';
 include '../services/mesa.php';
+session_start();
 $nombre = $_POST['nombre'];
-$responsable = $_POST['responsable'];
-$mesa = $_POST['mesa'];
+$responsable = $_SESSION['email'];
+$mesa = $_POST['idMesa'];
 
+$idusu=$pdo->prepare("SELECT * from tbl_usuario where tbl_usuario.email_use=?");
+$idusu->bindParam(1, $responsable);
+$idusu->execute();
+
+$idusu=$idusu->fetchAll(PDO::FETCH_ASSOC);
+foreach ($idusu as $idusu) {
+    $responsable = $idusu['id_use'];
+}
+
+echo $responsable;
 
 
 
@@ -25,4 +36,4 @@ $stmt2->execute();
 
 
 //redirigir al sala.php desde donde se envio
-header("Location:../View/sala.php");
+header("Location:../View/menu.php");

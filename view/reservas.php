@@ -9,10 +9,8 @@
     </center>
     <form action="./reservas.php" method="POST">
         <h1>Búsqueda de reservas</h1>
-        <p>Referencia de reserva (Número de reserva):</p> 
-            <input type="number" id="" name="id_res" placeholder="Número de reserva"><br>
         <p>Hora de reserva:</p> 
-            <input type="date" id="" name="horaIni_res" placeholder="Hora"><br>
+            <input type="datetime-local" id="" name="horaIni_res" placeholder="Hora"><br>
         <p>Datos de reserva:</p>
             <input type="text" id="" name="datos_res" placeholder="Nombre, empresa, etc..."><br>
         <p>Responsable de reserva:</p>
@@ -35,7 +33,7 @@
                 echo "</select><br><br>"
 
             ?>
-        <input type="submit" value="Filtrar"><br>
+        <input type="submit" value="Filtrar"><br><br>
     </form>
     <?php 
         //include '../services/connection.php';

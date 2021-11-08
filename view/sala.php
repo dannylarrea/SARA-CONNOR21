@@ -40,31 +40,31 @@
                     if($mesa['capacidad_mes'] ==2)
                     {
                         ?>
-                        <img data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-2" src="../media/mesa2.svg" alt="mesa 2 personas">
+                        <img data-id="<?php echo $mesa['id_mes']; ?>" data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-2" src="../media/mesa2.svg" alt="mesa 2 personas">
                         <?php
                     }
                     elseif($mesa['capacidad_mes'] ==4)
                     {
                         ?>
-                        <img data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-4" src="../media/mesa4.svg" alt="mesa 4 personas">
+                        <img data-id="<?php echo $mesa['id_mes']; ?>" data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-4" src="../media/mesa4.svg" alt="mesa 4 personas">
                         <?php    
                     }
                     elseif($mesa['capacidad_mes'] ==6)
                     {
                         ?>
-                        <img data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-6" src="../media/mesa6.svg" alt="mesa 6 personas">
+                        <img data-id="<?php echo $mesa['id_mes']; ?>" data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-6" src="../media/mesa6.svg" alt="mesa 6 personas">
                         <?php
                     }
                     elseif($mesa['capacidad_mes'] ==10)
                     {
                         ?>
-                        <img data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-10" src="../media/mesa10.svg" alt="mesa 10 personas">
+                        <img data-id="<?php echo $mesa['id_mes']; ?>" data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-10" src="../media/mesa10.svg" alt="mesa 10 personas">
                         <?php
                     }
                     else
                     {
                         ?>
-                        <img data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-4" src="../media/mesa4.svg" alt="mesa 4 personas">
+                        <img data-id="<?php echo $mesa['id_mes']; ?>" data-status="<?php echo $mesa['status_mes']; ?>" class="btn-abrirPop mesasvg mesa-4" src="../media/mesa4.svg" alt="mesa 4 personas">
                         <?php
                     }
                     ?>
@@ -88,10 +88,10 @@
             <div class="popup" id="popup">
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
                 <h3>Reservar mesa</h3>
-                <form METHOD='POST' action="../services/reservar-mesa.php">
+                <form METHOD='POST' class="crearReserva" action="../services/reservar-mesa.php">
+                    <input type="hidden" id="idMesa" class="idMesa" name="idMesa">
                     <label for="nombre">Nombre de la reserva</label>
                     <input type="text" id="nombre" name="nombre">
-                    <input type='hidden' name='sala' value=sala1.php>
                     <input type="submit" value="Reservar" class="btn">
                 </form>
             </div>
@@ -102,10 +102,9 @@
             <div class="popup" id="popup2">
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
                 <h3>Modificar reserva</h3>
-                <form METHOD='POST' action="../services/modificar-registro.php">
+                <form METHOD='POST'  action="../services/modificar-registro.php">
                     <label for="nombre">Nombre de la reserva</label>
                     <input type="text" id="nombre" name="nombre" readonly>
-                    <input type='hidden' name='sala' value=sala1.php>
                     <select name="accion">
                         <option value="finalizar">Finalizar</option>
                         <option value="cancelar">Cancelar</option>

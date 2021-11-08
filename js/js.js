@@ -53,6 +53,18 @@ $(document).ready(function() {
 //POPUP
 //////////////
 
+
+
+
+$(document).ready(function() {
+    $(".btn-abrirPop").each(function(index) {
+        $(this).click(function() {
+            $(".idMesa").val($(this).attr('data-id'))
+            console.log($(this).attr('data-id'))
+        });
+    })
+});
+
 $(document).ready(function() {
     $(".btn-cerrarPop").click(function() {
         $("#overlay").removeClass('active');
@@ -79,7 +91,10 @@ $(document).ready(function() {
 });
 
 
-// ////////Obtener valores del id
+////////Obtener valores del id
+
+
+
 // function getvalues(id) {
 //     var name = $(`.nombre[data*='${id}` + "||'").attr('data-name');
 //     var surname = $(`.apellido[data*='${id}` + "||'").attr('data-sur');

@@ -21,4 +21,4 @@ $stmt2->execute();
 
 
 //redirigir al sala.php desde donde se envio
-header("Location:../View/sala.php");
+header("Location:../View/menu.php");

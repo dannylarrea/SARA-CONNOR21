@@ -25,5 +25,4 @@ $stmt2->execute();
 
 
 //redirigir al sala.php desde donde se envio
-$sala = $_POST['sala'];
-header("Location:../View/{$sala}");
+header("Location:../View/sala.php");

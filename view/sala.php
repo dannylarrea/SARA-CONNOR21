@@ -104,6 +104,7 @@
                     <input type="hidden" id="idMesa" class="idMesa" name="idMesa">
                     <label for="nombre">Nombre de la reserva</label>
                     <input type="text" id="nombre" name="nombre">
+
                     <input type="submit" value="Reservar" class="btn">
                 </form>
             </div>

@@ -91,9 +91,7 @@
     </div>
 
     <?php 
-    /*
-    falta enviar id_mes, el responsable en los popup, recibir el id_res en popup modificar
-    */
+ 
     ?>
     <div class="overlay" id="overlay">
         <div class="abrirReserva" id="abrirReserva">

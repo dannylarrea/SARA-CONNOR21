@@ -18,4 +18,4 @@ if(isset($_POST['mantenimiento']))
 
 
 //redirigir al sala.php desde donde se envio
-header("Location:../View/sala.php");
+header("Location:../view/sala.php");

@@ -55,7 +55,7 @@
 
                 ?>
             <div class="sala" >
-            <form  method="post" action="sala.php"><input class="enviar" type="hidden" name="hiddensala" value="<?php echo $salas['id_sal'] ?>"><input type="submit"></form>
+            <form  method="post" action="../services/cookieMesa.php"><input class="enviar" type="hidden" name="hiddensala" value="<?php echo $salas['id_sal'] ?>"><input name="enviar" type="submit"></form>
                 <!-- <a href="sala2.php"></a> -->
                 <img src="../media/icons/<?php echo $salas['imagen_sal']?>" alt="">
                 <h2><?php echo $salas['nombre_sal'] ?></h2>

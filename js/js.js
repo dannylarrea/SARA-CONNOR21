@@ -32,8 +32,6 @@ $(document).ready(function() {
         console.log(Cookies.get('sala'));
         $("body .region-mesas").addClass(Cookies.get('sala'));
     }
-
-
 });
 
 //////////////
@@ -43,9 +41,15 @@ $(document).ready(function() {
     $(".mesa img").each(function(index) {
         if ($(this).attr("data-status") == "Ocupado/Reservado") {
             $(this).addClass('ocupada');
+
+        }
+
+    })
+    $(".mesa").each(function(index) {
+        if ($(this).attr("data-status") == "Ocupado/Reservado") {
             $(this).removeClass('btn-abrirPop');
             $(this).addClass('btn-abrirPop2');
-        } else {}
+        }
     })
 
 });
@@ -59,7 +63,13 @@ $(document).ready(function() {
 $(document).ready(function() {
     $(".btn-abrirPop").each(function(index) {
         $(this).click(function() {
-            $(".idMesa").val($(this).attr('data-id'))
+            $(".crearReserva .idMesa").val($(this).attr('data-id'))
+            console.log($(this).attr('data-id'))
+        });
+    })
+    $(".btn-abrirPop2").each(function(index) {
+        $(this).click(function() {
+            $(".editarReserva .idMesa").val($(this).attr('data-id'))
             console.log($(this).attr('data-id'))
         });
     })

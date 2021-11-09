@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="128.64333mm"
+   height="152.73587mm"
+   viewBox="0 0 128.64333 152.73587"
    version="1.1"
    id="svg2752"
    inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="426.36462"
-     inkscape:cy="613.47985"
+     inkscape:zoom="0.35"
+     inkscape:cx="159.92444"
+     inkscape:cy="342.86125"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -34,7 +34,12 @@
      inkscape:window-height="1030"
      inkscape:window-x="64"
      inkscape:window-y="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="0"
+     fit-margin-top="2"
+     lock-margins="true"
+     fit-margin-left="2"
+     fit-margin-right="2"
+     fit-margin-bottom="2" />
   <metadata
      id="metadata2749">
     <rdf:RDF>
@@ -50,14 +55,15 @@
   <g
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-32.539717,-67.263018)">
     <path
        id="rect833"
-       style="fill:#ffffff;stroke:#000000;stroke-width:1.5;stroke-miterlimit:0;stroke-opacity:1;paint-order:markers stroke fill;stroke-dasharray:none;stroke-linejoin:round;stroke-linecap:butt"
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
        d="m 68.48349,70.013018 h 56.64165 V 217.24889 H 68.48349 Z" />
     <path
        id="path928"
-       style="fill:#ffffff;stroke:#000000;stroke-width:1.5;stroke-miterlimit:0;stroke-opacity:1;paint-order:markers stroke fill;stroke-dasharray:none"
+       style="fill:#ffffff;stroke:#000000;stroke-width:1.5;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
        d="M 158.42249,95.534481 A 15.33097,14.575017 0 0 1 143.09152,110.1095 15.33097,14.575017 0 0 1 127.76055,95.534481 15.33097,14.575017 0 0 1 143.09152,80.959468 15.33097,14.575017 0 0 1 158.42249,95.534481 Z" />
     <path
        id="path928-7"

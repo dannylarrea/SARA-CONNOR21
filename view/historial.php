@@ -19,6 +19,8 @@
 </head>
 
 <body class="historial">
+        <div class="atras"><a href="menu.php"><i class="far fa-arrow-alt-square-left"></i></a></div>
+        <div class="logout"><a href="../services/kill-login.php"><i class="fas fa-user"></i></a></div>
 <?php 
     $reserva=$pdo->prepare("SELECT r.id_res, r.horaIni_res, r.horaFin_res, r.datos_res, u.nombre_use, m.id_mes, s.nombre_sal
     FROM tbl_reserva r
@@ -37,7 +39,7 @@
             <tr><form action="./historial.php" method="POST">
                 <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
                 <th><input type="date" id="" name="horaIni_res" placeholder="Hora"></th>
-                <th><input type="time" id="" name="horaFin_res" placeholder="Hora"></th>
+                <th><input type="date" id="" value="" name="horaFin_res" placeholder="Hora"></th>
                 <th><input type="text" id="" name="datos_res" placeholder="Nombre reserva"></th>
                 <th><select name='nombre_use' value=''>
                 <option value=''>Todos</option>
@@ -61,7 +63,7 @@
             ?>
                 <option value="<?php echo $reg['nombre_sal'];?>"><?php echo $reg['nombre_sal'];?></option>
             <?php } ?>
-            </select><input class="boton-filtro" type="submit" value="Filtrar"></th> 
+            </select><input class="boton-filtro" type="submit" value="f002"></th> 
 
                 </form></tr>
 <?php
@@ -83,7 +85,7 @@
         $queryGeneral = $queryGeneral.$queryhoraIni;
     }
 
-    if(isset($_POST['horaFin_res'])){//hacerlo con addtime
+    if(!empty($_POST['horaFin_res'])){//hacerlo con addtime
         $horaFin_res = $_POST['horaFin_res'];
         $queryhoraFin = "AND r.horaFin_res LIKE '%$horaFin_res%'";
         $queryGeneral = $queryGeneral.$queryhoraFin;

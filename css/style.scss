@@ -116,6 +116,43 @@ body {
     }
 }
 
+.atras {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    // background: $color3;
+    a {
+        margin-top: 3px;
+        min-height: 55px;
+        min-width: 55px;
+        // background: $color3;
+        text-decoration: none;
+        color: white;
+        @extend .flex-cv;
+        i {
+            font-size: 55px;
+        }
+    }
+}
+
+.logout {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    a {
+        margin-top: 3px;
+        min-height: 55px;
+        min-width: 55px;
+        // background: $color3;
+        text-decoration: none;
+        color: white;
+        @extend .flex-cv;
+        i {
+            font-size: 55px;
+        }
+    }
+}
+
 .region-salas {
     min-height: 100vh;
     @extend .flex-cv;

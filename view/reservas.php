@@ -4,6 +4,8 @@
 </head>
 
 <body>
+        <div class="atras"><a href="menu.php"><i class="far fa-arrow-alt-square-left"></i></a></div>
+        <div class="logout"><a href="../services/kill-login.php"><i class="fas fa-user"></i></a></div>
     <form action="./reservas.php" method="POST">
         <h1>Búsqueda de reservas</h1>
         <p>Hora de reserva:</p> 

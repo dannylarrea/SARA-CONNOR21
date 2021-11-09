@@ -26,7 +26,8 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="salass">
-
+        <div class="atras"><a href="menu.php"><i class="far fa-arrow-alt-square-left"></i></a></div>
+        <div class="logout"><a href="../services/kill-login.php"><i class="fas fa-user"></i></a></div>
     <div class="region-mesas flex-cv <?php echo $salas;?>">
             
             <div class="grid-mesas">

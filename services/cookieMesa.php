@@ -1,4 +1,7 @@
 <?php
+session_start();
+if (isset($_SESSION['email']))
+{
 if(isset($_POST["enviar"])){
 $idsala = $_POST['hiddensala'];
 $sala="sala".$idsala;
@@ -10,5 +13,9 @@ header("Location:../view/sala.php");
 }else{
     header("Location:../view/menu.php");
 
+}
+}else
+{
+    header("Location:../view/login.php");
 }
 ?>

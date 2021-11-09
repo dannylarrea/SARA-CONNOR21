@@ -1,6 +1,11 @@
 <?php
-include_once '../services/connection.php';
-include_once '../services/reserva.php';
+
+session_start();
+if (isset($_SESSION['email']))
+{
+include '../services/connection.php';
+include '../services/reserva.php';
+
 $nombre = $_POST['nombre'];
 $registro = $_POST['registro'];
 
@@ -14,4 +19,9 @@ $stmt->bindParam(2, $registro);
 $stmt->execute();
 
 //redirigir al sala.php desde donde se envio
-header("Location:../view/sala.php");
+
+header("Location:../View/sala.php");
+}else
+{
+    header("Location:../view/login.php");
+}

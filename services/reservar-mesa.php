@@ -1,11 +1,13 @@
 <?php
 
+
 session_start();
 if (isset($_SESSION['email']))
 {
 include '../services/connection.php';
 include '../services/reserva.php';
 include '../services/mesa.php';
+
 $nombre = $_POST['nombre'];
 $responsable = $_SESSION['email'];
 $mesa = $_POST['idMesa'];
@@ -33,8 +35,6 @@ $stmt->execute();
 $stmt2=$pdo->prepare("UPDATE `tbl_mesa` SET `status_mes` = 'Ocupado/Reservado' WHERE `tbl_mesa`.`id_mes` = ?");
 $stmt2->bindParam(1, $mesa);
 $stmt2->execute();
-
-
 
 
 

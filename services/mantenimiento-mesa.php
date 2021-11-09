@@ -1,9 +1,11 @@
 <?php
+
 session_start();
 if (isset($_SESSION['email']))
 {
 include '../services/connection.php';
 include '../services/mesa.php';
+
 
 $mesa = $_POST['mesa'];
 

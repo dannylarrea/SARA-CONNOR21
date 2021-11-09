@@ -1,6 +1,6 @@
 <?php
-include '../services/connection.php';
-include '../services/mesa.php';
+include_once '../services/connection.php';
+include_once '../services/mesa.php';
 
 $mesa = $_POST['mesa'];
 

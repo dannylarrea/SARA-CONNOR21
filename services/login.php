@@ -1,5 +1,5 @@
 <?php
-include '../services/connection.php';
+include_once '../services/connection.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 

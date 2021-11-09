@@ -27,12 +27,96 @@
     INNER JOIN tbl_sala s ON m.id_sal_fk=s.id_sal;");
     $reserva->execute();
     $data = $reserva->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
-<div class="region-historial flex-cv">
     
+    
+<div class="region-historial flex-cv">
+
         <table class="table-reservas">
-            <thead>
+        <thead>
+            <tr><form action="./historial.php" method="POST">
+                <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
+                <th><input type="date" id="" name="horaIni_res" placeholder="Hora"></th>
+                <th><input type="time" id="" name="horaFin_res" placeholder="Hora"></th>
+                <th><input type="text" id="" name="datos_res" placeholder="Nombre reserva"></th>
+                <th><select name='nombre_use' value=''>
+                <option value=''>Todos</option>
+            <?php 
+                $salas=$pdo->prepare("SELECT nombre_use FROM tbl_usuario where tipo_use = 'Camarero'");
+                $salas->execute();
+                $data = $salas->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($data as $reg) {
+            ?>
+                <option value="<?php echo $reg['nombre_use'];?>"><?php echo $reg['nombre_use'];?></option>
+            <?php } ?>
+            </select></th>
+                <th><input type="number" id="" name="id_mes" placeholder="Número de mesa"></th>
+                <th><select name='nombre_sal' value=''>
+                <option value=''>Todos</option>
+            <?php 
+                $salas=$pdo->prepare("SELECT nombre_sal FROM tbl_sala GROUP BY nombre_sal");
+                $salas->execute();
+                $data = $salas->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($data as $reg) {
+            ?>
+                <option value="<?php echo $reg['nombre_sal'];?>"><?php echo $reg['nombre_sal'];?></option>
+            <?php } ?>
+            </select><input class="boton-filtro" type="submit" value="Filtrar"></th> 
+
+                </form></tr>
+<?php
+    $queryGeneral = "SELECT r.id_res, r.horaIni_res, r.horaFin_res, r.datos_res, u.nombre_use, m.id_mes, s.nombre_sal
+    FROM tbl_reserva r
+    INNER JOIN tbl_usuario u ON r.id_use_fk=u.id_use 
+    INNER JOIN tbl_mesa m ON r.id_mes_fk=m.id_mes
+    INNER JOIN tbl_sala s ON m.id_sal_fk=s.id_sal WHERE id_res LIKE '%%'";
+
+    if(isset($_POST['id_res'])){
+        $id_res = $_POST['id_res'];
+        $queryid_res = "AND r.id_res LIKE '%$id_res%'";
+        $queryGeneral = $queryGeneral.$queryid_res;
+    }
+
+    if(isset($_POST['horaIni_res'])){
+        $horaIni_res = $_POST['horaIni_res'];
+        $queryhoraIni = "AND r.horaIni_res LIKE '%$horaIni_res%'";
+        $queryGeneral = $queryGeneral.$queryhoraIni;
+    }
+
+    if(isset($_POST['horaFin_res'])){//hacerlo con addtime
+        $horaFin_res = $_POST['horaFin_res'];
+        $queryhoraFin = "AND r.horaFin_res LIKE '%$horaFin_res%'";
+        $queryGeneral = $queryGeneral.$queryhoraFin;
+    }
+
+    if(isset($_POST['datos_res'])){
+        $datos_res = $_POST['datos_res'];
+        $querydatos_res = "AND r.datos_res LIKE '%$datos_res%'";
+        $queryGeneral = $queryGeneral.$querydatos_res;
+    }
+
+    if(isset($_POST['nombre_use'])){
+        $nombre_use = $_POST['nombre_use'];
+        $querynombreuse = "AND u.nombre_use LIKE '%$nombre_use%'";
+        $queryGeneral = $queryGeneral.$querynombreuse;
+    }
+
+    if(isset($_POST['id_mes'])){
+        $id_mes = $_POST['id_mes'];
+        $queryidmes = "AND m.id_mes LIKE '%$id_mes%'";
+        $queryGeneral = $queryGeneral.$queryidmes;
+    }
+
+    if(isset($_POST['nombre_sal'])){
+        $nombre_sal = $_POST['nombre_sal'];
+        $querynombresal = "AND s.nombre_sal LIKE '%$nombre_sal%'";
+        $queryGeneral = $queryGeneral.$querynombresal;
+    }
+
+        $reserva=$pdo->prepare($queryGeneral);
+        $reserva->execute();
+        $data = $reserva->fetchAll(PDO::FETCH_ASSOC);
+?>
                 <tr>
                     <th>ID reserva</th>
                     <th>Inicio</th>
@@ -78,3 +162,29 @@
 </div>
 </body>
 </html>
+
+<div class="hide">
+<form action="./historial.php" method="POST">
+        <p>Hora de reserva:</p> 
+            <input type="date" id="" name="horaIni_res" placeholder="Hora"><br>
+        <p>Hora fin reserva:</p> 
+            <input type="date" id="" name="horaFin_res" placeholder="Hora"><br><br>
+        <p>Mesa:</p>
+            <input type="number" id="" name="id_mes" placeholder="Número de mesa"><br><br>
+            <label for='seleccion-sala'>Sala:</label>
+            <select name='nombre_sal' value=''>
+                <option value=''>Todos</option>
+            <?php 
+                $salas=$pdo->prepare("SELECT nombre_sal FROM tbl_sala GROUP BY nombre_sal");
+                $salas->execute();
+                $data = $salas->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($data as $reg) {
+            ?>
+                <option value="<?php echo $reg['nombre_sal'];?>"><?php echo $reg['nombre_sal'];?></option>
+            <?php } ?>
+            </select>
+            
+        <input type="submit" value="Filtrar"><br>
+    </form>
+
+    </div>

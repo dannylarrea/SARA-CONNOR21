@@ -1,7 +1,7 @@
 <?php
-include '../services/connection.php';
-include '../services/reserva.php';
-include '../services/mesa.php';
+include_once '../services/connection.php';
+include_once '../services/reserva.php';
+include_once '../services/mesa.php';
 session_start();
 $nombre = $_POST['nombre'];
 $responsable = $_SESSION['email'];
@@ -30,8 +30,6 @@ $stmt->execute();
 $stmt2=$pdo->prepare("UPDATE `tbl_mesa` SET `status_mes` = 'Ocupado/Reservado' WHERE `tbl_mesa`.`id_mes` = ?");
 $stmt2->bindParam(1, $mesa);
 $stmt2->execute();
-
-
 
 
 

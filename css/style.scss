@@ -66,7 +66,8 @@ body {
     width: 100%;
     min-height: 100vh;
     &.menu,
-    &.salass {
+    &.salass,
+    &.historial {
         background: $color5;
     }
     &.salass {
@@ -201,11 +202,26 @@ body {
     }
 }
 
+.container-absolute {
+    position: absolute;
+    bottom: 25%;
+    right: 17%;
+    .btn-reservas {
+        text-decoration: none;
+        color: white;
+        padding: 15px;
+        font-size: 25px;
+        background: $color4;
+        color: $color5;
+    }
+}
+
 .region-mesas {
     min-height: 100vh;
     .grid-mesas {
         display: grid;
         grid-gap: 15px;
+        width: 70vw;
     }
     .mesa {
         @extend .flex-cv;
@@ -376,6 +392,52 @@ body {
     }
 }
 
+.region-historial {
+    min-height: 100vh;
+    table {
+        width: 800px;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    th,
+    td {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+    th {
+        text-align: left;
+    }
+    thead {
+        th {
+            background-color: $color1;
+        }
+    }
+    tbody {
+        tr {
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+        }
+        td {
+            position: relative;
+            &:hover {
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: -9999px;
+                    bottom: -9999px;
+                    background-color: rgba(255, 255, 255, 0.2);
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////POPUP//////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -402,7 +464,7 @@ body {
     border-radius: 3px;
     padding: 20px;
     text-align: center;
-    width: 600px;
+    width: 360px;
     transition: .3s ease all;
     transform: scale(0.7);
     opacity: 0;
@@ -410,6 +472,17 @@ body {
     form {
         @extend .flex-cv;
         flex-flow: column;
+        opacity: 0;
+        padding: 15px;
+    }
+    input[type="submit"] {
+        background: $color5;
+        padding: 5px 10px;
+        margin: 15px;
+        opacity: 0;
+    }
+    input[type="text"] {
+        padding: 5px 10px;
     }
     .btn-cerrarPop {
         font-size: 16px;
@@ -426,6 +499,7 @@ body {
         font-size: 36px;
         font-weight: 600;
         margin-bottom: 10px;
+        padding: 25px;
         opacity: 0;
     }
     h4 {
@@ -436,6 +510,11 @@ body {
     }
     .contenedor-popup {
         opacity: 0;
+    }
+    label {
+        font-size: 20px;
+        font-weight: 300;
+        margin-bottom: 15px;
     }
 }
 

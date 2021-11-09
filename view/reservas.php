@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<?php include_once '../services/connection.php';?>
 <html lang="en">
+   
 <head>
 </head>
 
@@ -11,7 +13,7 @@
         <p>Datos de reserva:</p>
             <input type="text" id="" name="datos_res" placeholder="Nombre, empresa, etc..."><br><br>
         <?php
-            include '../services/connection.php';
+            
             $responsable=$pdo->prepare("SELECT nombre_use FROM tbl_usuario");
             $responsable->execute();
             $data = $responsable->fetchAll(PDO::FETCH_ASSOC);

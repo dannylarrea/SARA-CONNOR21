@@ -20,12 +20,12 @@ try {
     {
         session_start();
         $_SESSION['email']=$username;
-        header("Location:../View/menu.php");
+        header("Location:../view/menu.php");
     }
     else {
-        header("Location:../View/login.php");
+        header("Location:../view/login.php");
     }
 }catch(PDOException $e){
-    header("Location:../View/login.php");
+    header("Location:../view/login.php");
  }
 

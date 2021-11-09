@@ -59,7 +59,7 @@ body {
   min-height: 100vh;
 }
 
-body.menu, body.salass {
+body.menu, body.salass, body.historial {
   background: #264653;
 }
 
@@ -211,6 +211,21 @@ body.salass {
   margin-right: 1px;
 }
 
+.container-absolute {
+  position: absolute;
+  bottom: 25%;
+  right: 17%;
+}
+
+.container-absolute .btn-reservas {
+  text-decoration: none;
+  color: white;
+  padding: 15px;
+  font-size: 25px;
+  background: #D9D2B6;
+  color: #264653;
+}
+
 .region-mesas {
   min-height: 100vh;
 }
@@ -219,6 +234,7 @@ body.salass {
   display: -ms-grid;
   display: grid;
   grid-gap: 15px;
+  width: 70vw;
 }
 
 .region-mesas .mesa {
@@ -434,6 +450,52 @@ body.salass {
   grid-area: 2/5/2/1 span;
 }
 
+.region-historial {
+  min-height: 100vh;
+}
+
+.region-historial table {
+  width: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.region-historial th,
+.region-historial td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.region-historial th {
+  text-align: left;
+}
+
+.region-historial thead th {
+  background-color: #D0E1D4;
+}
+
+.region-historial tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.region-historial tbody td {
+  position: relative;
+}
+
+.region-historial tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
+
 .overlay {
   background: rgba(0, 0, 0, 0.3);
   position: fixed;
@@ -465,7 +527,7 @@ body.salass {
   border-radius: 3px;
   padding: 20px;
   text-align: center;
-  width: 600px;
+  width: 360px;
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
   -webkit-transform: scale(0.7);
@@ -479,6 +541,19 @@ body.salass {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  opacity: 0;
+  padding: 15px;
+}
+
+.popup input[type="submit"] {
+  background: #264653;
+  padding: 5px 10px;
+  margin: 15px;
+  opacity: 0;
+}
+
+.popup input[type="text"] {
+  padding: 5px 10px;
 }
 
 .popup .btn-cerrarPop {
@@ -499,6 +574,7 @@ body.salass {
   font-size: 36px;
   font-weight: 600;
   margin-bottom: 10px;
+  padding: 25px;
   opacity: 0;
 }
 
@@ -511,6 +587,12 @@ body.salass {
 
 .popup .contenedor-popup {
   opacity: 0;
+}
+
+.popup label {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 15px;
 }
 
 /* ------------------------- */

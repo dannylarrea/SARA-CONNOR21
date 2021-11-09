@@ -86,7 +86,9 @@
             <?php 
                     }
             ?>
-
+            <div class="container-absolute">
+                <a class="btn-reservas" href="historial.php">Reservas</a>
+            </div>
     </div>
     <?php
     }else

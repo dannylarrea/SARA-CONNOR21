@@ -14,4 +14,4 @@ $stmt->bindParam(2, $registro);
 $stmt->execute();
 
 //redirigir al sala.php desde donde se envio
-header("Location:../View/sala.php");
+header("Location:../view/sala.php");

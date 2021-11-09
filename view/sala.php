@@ -115,7 +115,7 @@
             <div class="popup" id="popup2">
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
                 <h3>Modificar reserva</h3>
-                <form METHOD='POST'  class="editarReserva" action="../services/modificar-registro.php">
+                <form METHOD='POST'  class="editarReserva" action="../services/acabar-reserva.php">
                     <input type="hidden" id="idMesa" class="idMesa" name="idMesa">
                     <select name="accion">
                         <option value="finalizar">Finalizar</option>

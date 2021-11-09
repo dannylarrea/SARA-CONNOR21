@@ -2,7 +2,7 @@
 include '../services/connection.php';
 include '../services/reserva.php';
 include '../services/mesa.php';
-$mesa = $_POST['mesa'];
+$mesa = $_POST['idMesa'];
 
 
 
@@ -21,4 +21,4 @@ $stmt2->execute();
 
 
 //redirigir al sala.php desde donde se envio
-header("Location:../View/sala.php");
+header("Location:../View/menu.php");

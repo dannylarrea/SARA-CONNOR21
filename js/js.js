@@ -73,6 +73,12 @@ $(document).ready(function() {
             console.log($(this).attr('data-id'))
         });
     })
+    $(".btn-abrirPop2").each(function(index) {
+        $(this).click(function() {
+            $(".editarReserva .idMesa").val($(this).attr('data-id'))
+            console.log($(this).attr('data-id'))
+        });
+    })
 });
 
 $(document).ready(function() {

@@ -31,6 +31,9 @@
 </head>
 <body class="menu">
    
+        
+        <div class="logout"><a href="../services/kill-login.php"><i class="fas fa-user"></i></a></div>
+   
     <div class="region-salas">
         <div class="grid-salas flex-cv">
         <?php

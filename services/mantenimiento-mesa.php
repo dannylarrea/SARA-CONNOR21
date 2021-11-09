@@ -1,4 +1,7 @@
 <?php
+session_start();
+if (isset($_SESSION['email']))
+{
 include '../services/connection.php';
 include '../services/mesa.php';
 
@@ -18,4 +21,9 @@ if(isset($_POST['mantenimiento']))
 
 
 //redirigir al sala.php desde donde se envio
-header("Location:../view/sala.php");
+header("Location:../View/sala.php");
+
+}else
+{
+    header("Location:../view/login.php");
+}

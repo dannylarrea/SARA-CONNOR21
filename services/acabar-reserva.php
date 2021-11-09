@@ -10,7 +10,7 @@ $mesa = $_POST['idMesa'];
 
 
 
-$stmt=$pdo->prepare("UPDATE `tbl_reserva` SET `horaFin_res` = CURDATE() WHERE tbl_reserva.id_mes_fk = ? and tbl_reserva.horaFin_res is null");
+$stmt=$pdo->prepare("UPDATE `tbl_reserva` SET `horaFin_res` = NOW() WHERE tbl_reserva.id_mes_fk = ? and tbl_reserva.horaFin_res is null");
 $stmt->bindParam(1, $mesa);
 $stmt->execute();
 

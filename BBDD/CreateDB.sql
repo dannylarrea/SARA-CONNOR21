@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2021 a las 19:35:19
+-- Tiempo de generación: 09-11-2021 a las 21:50:41
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -26,8 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `tbl_mesa`
 --
-create database `bd_restaurante`;
-use `bd_restaurante`;
+
 CREATE TABLE `tbl_mesa` (
   `id_mes` int(11) NOT NULL,
   `status_mes` enum('Libre','Mantenimiento','Ocupado/Reservado') NOT NULL,
@@ -40,7 +39,7 @@ CREATE TABLE `tbl_mesa` (
 --
 
 INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VALUES
-(1, 'Libre', 2, 1),
+(1, 'Mantenimiento', 2, 1),
 (2, 'Libre', 2, 1),
 (3, 'Libre', 2, 1),
 (4, 'Libre', 2, 1),
@@ -81,15 +80,11 @@ INSERT INTO `tbl_mesa` (`id_mes`, `status_mes`, `capacidad_mes`, `id_sal_fk`) VA
 (39, 'Libre', 4, 4),
 (40, 'Libre', 6, 4),
 (41, 'Libre', 6, 4),
-(42, 'Ocupado/Reservado', 2, 5),
-(43, 'Libre', 2, 5),
+(42, 'Libre', 2, 5),
+(43, 'Ocupado/Reservado', 2, 5),
 (44, 'Libre', 4, 5),
 (45, 'Libre', 4, 5),
 (46, 'Libre', 4, 5);
-
-
-
-
 
 -- --------------------------------------------------------
 
@@ -111,8 +106,12 @@ CREATE TABLE `tbl_reserva` (
 --
 
 INSERT INTO `tbl_reserva` (`id_res`, `horaIni_res`, `horaFin_res`, `datos_res`, `id_use_fk`, `id_mes_fk`) VALUES
-(1, '2021-11-05 19:10:41', '2021-11-05 17:37:26', 'Loko', 2, 2 ),
-(3, '2021-11-05 17:04:34', '2021-11-05 17:30:02', 'Starkiller', 2, 8);
+(1, '2021-11-05 19:10:41', '2021-11-05 17:37:26', 'Loko', 2, 2),
+(3, '2021-11-05 17:04:34', '2021-11-05 17:30:02', 'Starkiller', 2, 8),
+(17, '2021-11-09 17:12:52', '2021-11-09 21:49:21', 'Halfonso', 1, 7),
+(18, '2021-11-09 17:13:40', NULL, 'QWERTY', 1, 43),
+(19, '2021-11-09 17:20:45', '2021-11-09 21:49:04', 'Raul69', 1, 16),
+(20, '2021-11-09 21:47:48', '2021-11-09 21:48:30', 'Su madre', 1, 37);
 
 -- --------------------------------------------------------
 
@@ -159,7 +158,8 @@ CREATE TABLE `tbl_usuario` (
 INSERT INTO `tbl_usuario` (`id_use`, `nombre_use`, `email_use`, `pwd_use`, `tipo_use`) VALUES
 (1, 'Alfredo', 'blumal@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 'Camarero'),
 (2, 'Isaac', 'isaac@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 'Camarero'),
-(3, 'Raul', 'raulseleccion@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'Camarero');
+(3, 'Raul', 'raulseleccion@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'Camarero'),
+(4, 'vegetta69', 'vegetta69@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Mantenimiento');
 
 --
 -- Índices para tablas volcadas
@@ -200,13 +200,13 @@ ALTER TABLE `tbl_usuario`
 -- AUTO_INCREMENT de la tabla `tbl_mesa`
 --
 ALTER TABLE `tbl_mesa`
-  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_reserva`
 --
 ALTER TABLE `tbl_reserva`
-  MODIFY `id_res` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_res` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sala`
@@ -218,7 +218,7 @@ ALTER TABLE `tbl_sala`
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
 --
 ALTER TABLE `tbl_usuario`
-  MODIFY `id_use` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_use` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -229,14 +229,6 @@ ALTER TABLE `tbl_usuario`
 --
 ALTER TABLE `tbl_mesa`
   ADD CONSTRAINT `fk_sala_mesa` FOREIGN KEY (`id_sal_fk`) REFERENCES `tbl_sala` (`id_sal`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `tbl_reserva`
---
-ALTER TABLE `tbl_reserva`
-  ADD CONSTRAINT `fk_mesa_reserva` FOREIGN KEY (`id_mes_fk`) REFERENCES `tbl_mesa` (`id_mes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_usuario_reserva` FOREIGN KEY (`id_use_fk`) REFERENCES `tbl_usuario` (`id_use`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
